@@ -29,6 +29,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'import/no-named-as-default': 0,
   },
   ignorePatterns: ['webpack/*', 'eslintre.js'],
 }

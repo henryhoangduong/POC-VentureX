@@ -14,10 +14,10 @@ export const Header: FC = () => {
         <img src={message} alt="" />
         <Info>
           <img src={user} alt="" />
-          <div>
-            <span>Henry</span>
+          {/* <div>
+            <span>Borrower</span>
             <span>henryhoangduong@gmail.com</span>
-          </div>
+          </div> */}
         </Info>
       </SubWrapper>
     </Wrapper>
@@ -33,6 +33,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 5px;
+  border-radius: 10px;
 `
 
 const Info = styled.div`

@@ -13,7 +13,16 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
       <Sidebar />
       <MainWrapper>
         <Header />
-        <div style={{ background: 'white', margin: '5px' }}>{children}</div>
+        <div
+          style={{
+            margin: '5px',
+            borderRadius: '10px',
+            overflow: 'hidden',
+            height: '100%',
+          }}
+        >
+          {children}
+        </div>
       </MainWrapper>
     </Wrapper>
   )
@@ -22,8 +31,11 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 5px;
+  justify-content: space-between;
 `
 
 const MainWrapper = styled.div`
-  width: 100%;
+  width: 84%;
+  overflow-y: scroll;
 `

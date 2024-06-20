@@ -1,39 +1,54 @@
-import { FC } from 'react'
+import { FC, ReactNode } from 'react'
 import { styled } from 'styled-components'
+import { Link, useLocation } from 'react-router-dom'
 
 interface SidebarItemProps {
-  icon: string
+  icon: ReactNode
   name: string
+  link: string
 }
 
-export const SidebarItem: FC<SidebarItemProps> = ({ icon, name }) => {
+export const SidebarItem: FC<SidebarItemProps> = ({ icon, name, link }) => {
+  const location = useLocation()
+  console.log(location)
   return (
     <ItemWrapper>
-      <img src={icon} alt="" />
-      <span>{name}</span>
+      <Link className={location.pathname === link ? 'active' : ''} to={link}>
+        {icon}
+        <span>{name}</span>
+      </Link>
     </ItemWrapper>
   )
 }
 
-const ItemWrapper = styled.li`
+const ItemWrapper = styled.div`
   position: relative;
   left: 5%;
-  width: max-content;
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  color: black;
-  font-weight: bold;
+  width: 90%;
   margin-bottom: 10px;
-  & :hover {
-    color: #6f35ff;
+  & a {
+    font-size: 14.64px;
+    font-weight: regular;
+    color: #5d7285;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 7px;
+  }
+  & :nth-child(1) {
+    margin-right: 5px;
+    background: transparent;
+  }
+  &:hover {
     cursor: pointer;
+    background: #e9f5fe;
   }
   & img {
-    width: 12px;
+    border: red solid 1px;
+    height: 24px;
     margin-right: 20px;
   }
-  & img:hover {
-    background-color: #6f35ff;
+  & .active {
+    border-left: #5d7285 3px solid;
   }
 `

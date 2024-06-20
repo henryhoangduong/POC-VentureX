@@ -16,8 +16,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
   & :nth-child(1) {
     font-size: 14px;
   }

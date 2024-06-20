@@ -1,56 +1,26 @@
 {
   "compilerOptions": {
-        "target": "es5",
+    "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": false ,
+    "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true ,
-    "allowSyntheticDefaultImports": true ,
-
-    "strict": true ,
-    "forceConsistentCasingInFileNames": true ,
-    "module": "esnext" ,
-    "moduleResolution": "node" ,
-    "resolveJsonModule": true ,
-    "isolatedModules": true ,
-    "jsx": "react-jsx" ,
-    "sourceMap": true ,
-    "noEmit": true ,
-    "incremental": true ,
-    "declaration": false ,
-    "rootDir": "src" ,
-    "outDir": "build" ,
-    "baseUrl": "./" ,
-    "paths": {
-      "@/*": ["src/*"],
-      "@/components/*": ["src/components/*"],
-      "@/pages/*": ["src/pages/*"]
-    },
-    "typeRoots": [
-      "/global.d.ts",
-      "/src/declarations.d.ts",
-      "node_modules/@types",
-      "types"
-    ] ,
-    "strictNullChecks": true ,
-    "strictFunctionTypes": true ,
-    "strictBindCallApply": true ,
-    "strictPropertyInitialization": true ,
-    "noImplicitThis": true,
-    "noUnusedParameters": true ,
-    "noImplicitReturns": true ,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "emitDecoratorMetadata": true ,
-    "experimentalDecorators": true 
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "include": ["*.d.ts", "**/*.ts", "**/*.tsx", "**/*.scss"],
-  "exclude": [
-    "node_modules",
-    "build",
-    "dist"
+  "include": [
+    "src"
   ]
 }

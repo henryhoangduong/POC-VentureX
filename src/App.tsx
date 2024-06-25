@@ -5,9 +5,11 @@ import { Admin } from './pages/Admin'
 import { Home } from './pages/Home'
 import { Lender } from './pages/Lender'
 import { Borrower } from './pages/Borrower'
-import { Pool } from './pages/Pool'
+import { Fundraising } from './pages/Fundraising'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const router = [
@@ -24,8 +26,8 @@ function App() {
       element: <Borrower />,
     },
     {
-      path: '/pool',
-      element: <Pool />,
+      path: '/fundraising',
+      element: <Fundraising />,
     },
   ]
 
@@ -43,6 +45,7 @@ function App() {
           </Layout>
         </Router>
       </Provider>
+      <ToastContainer />
     </div>
   )
 }

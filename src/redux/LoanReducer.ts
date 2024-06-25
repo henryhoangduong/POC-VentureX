@@ -8,7 +8,8 @@ export interface Loan {
   loanSize: number
   interestRate: number
   collateralValue: number
-  isApprove: boolean
+  isApproveAdmin: boolean
+  isApproveBorrower: boolean
 }
 export interface LoanInitialState {
   loanLists: Loan[]
@@ -20,7 +21,8 @@ const initialState: LoanInitialState = {
       loanSize: 10,
       interestRate: 10,
       collateralValue: 10,
-      isApprove: true,
+      isApproveAdmin: false,
+      isApproveBorrower: false,
     },
   ],
 }
@@ -30,15 +32,29 @@ export const loanSlice = createSlice({
   initialState,
   reducers: {
     addLoan: (state, action: PayloadAction<Loan>) => {
-      state.loanLists.push({ ...action.payload, isApprove: false })
+      state.loanLists.push({
+        ...action.payload,
+        isApproveAdmin: false,
+        isApproveBorrower: false,
+      })
     },
-    approveLoan: (
+    approveLoanAdmin: (
       state,
-      action: PayloadAction<{ id: string; isApprove: boolean }>,
+      action: PayloadAction<{ id: string; isApproveAdmin: boolean }>,
     ) => {
       state.loanLists.map((item) => {
         if (item.id === action.payload.id) {
-          item.isApprove = action.payload.isApprove
+          item.isApproveAdmin = action.payload.isApproveAdmin
+        }
+      })
+    },
+    approveLoanBorrower: (
+      state,
+      action: PayloadAction<{ id: string; isApproveBorrower: boolean }>,
+    ) => {
+      state.loanLists.map((item) => {
+        if (item.id === action.payload.id) {
+          item.isApproveBorrower = action.payload.isApproveBorrower
         }
       })
     },
@@ -46,5 +62,6 @@ export const loanSlice = createSlice({
 })
 
 // Part 4
-export const { addLoan, approveLoan } = loanSlice.actions
+export const { addLoan, approveLoanAdmin, approveLoanBorrower } =
+  loanSlice.actions
 export default loanSlice.reducer

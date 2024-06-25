@@ -23,8 +23,8 @@ const sideBarItemList = [
   },
   {
     icon: <DashboardIcon color="#5D7285" size={1} />,
-    name: 'Pool',
-    link: '/pool',
+    name: 'Fundraising',
+    link: '/fundraising',
   },
 ]
 

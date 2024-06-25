@@ -3,14 +3,17 @@ import { FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Loan, addLoan } from '../../redux/LoanReducer'
 import { v4 as uuidv4 } from 'uuid'
+import { toast } from 'react-toastify'
 
 export const LoanRequest: FC = () => {
+  const notify = () => toast('Loan created')
   const initialLoanState: Loan = {
     id: '',
     loanSize: 0,
     interestRate: 0,
     collateralValue: 0,
-    isApprove: false,
+    isApproveAdmin: false,
+    isApproveBorrower: false,
   }
 
   const [loan, setLoan] = useState<Loan>(initialLoanState)
@@ -20,7 +23,8 @@ export const LoanRequest: FC = () => {
     e.preventDefault()
     const newLoan = { ...loan, id: uuidv4() }
     dispatch(addLoan(newLoan))
-    setLoan(initialLoanState) // Reset the form after dispatching the action
+    setLoan(initialLoanState)
+    notify()
   }
 
   return (

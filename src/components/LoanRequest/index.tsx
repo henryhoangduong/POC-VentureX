@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Loan, addLoan } from '../../redux/LoanReducer'
 import { v4 as uuidv4 } from 'uuid'
@@ -15,7 +15,14 @@ export const LoanRequest: FC = () => {
     isApproveAdmin: false,
     isApproveBorrower: false,
   }
+  const [ships, setShips] = useState<number>(0)
+  const [realEstate, setRealEstate] = useState<number>(0)
+  const [collateral, setCollateral] = useState<number>(0)
+  const [cargo, setCargo] = useState<number>(0)
 
+  useEffect(() => {
+    setCollateral(ships + realEstate + cargo)
+  }, [ships, cargo, realEstate])
   const [loan, setLoan] = useState<Loan>(initialLoanState)
   const dispatch = useDispatch()
 
@@ -36,10 +43,12 @@ export const LoanRequest: FC = () => {
             onChange={(e) => {
               setLoan((current) => ({
                 ...current,
-                [e.target.name]: parseFloat(e.target.value),
+                [e.target.name]: parseFloat(e.target.value)
+                  ? parseFloat(e.target.value)
+                  : 0,
               }))
             }}
-            type="number"
+            type="text"
             name="loanSize"
             value={loan.loanSize}
           />
@@ -50,27 +59,60 @@ export const LoanRequest: FC = () => {
             onChange={(e) => {
               setLoan((current) => ({
                 ...current,
-                [e.target.name]: parseFloat(e.target.value),
+                [e.target.name]: parseFloat(e.target.value)
+                  ? parseFloat(e.target.value)
+                  : 0,
               }))
             }}
-            type="number"
+            type="text"
             name="interestRate"
             value={loan.interestRate}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="collateralValue">Collateral Value</label>
-          <input
-            onChange={(e) => {
-              setLoan((current) => ({
-                ...current,
-                [e.target.name]: parseFloat(e.target.value),
-              }))
-            }}
-            type="number"
-            name="collateralValue"
-            value={loan.collateralValue}
-          />
+          <div className="collateral">
+            <h4>Collateral value: </h4>
+            <span>{collateral}</span>
+          </div>
+          <div className="subform-group">
+            <label htmlFor="Ships">Ship</label>
+            <input
+              onChange={(e) => {
+                setShips(
+                  parseFloat(e.target.value) ? parseFloat(e.target.value) : 0,
+                )
+              }}
+              type="text"
+              value={ships ? ships : 0}
+              name="Ships"
+            />
+          </div>
+          <div className="subform-group">
+            <label htmlFor="Cargo">Cargo</label>
+            <input
+              onChange={(e) => {
+                setCargo(
+                  parseFloat(e.target.value) ? parseFloat(e.target.value) : 0,
+                )
+              }}
+              type="text"
+              value={cargo ? cargo : 0}
+              name="Cargo"
+            />
+          </div>
+          <div className="subform-group">
+            <label htmlFor="Real Estate">Real Estate</label>
+            <input
+              onChange={(e) => {
+                setRealEstate(
+                  parseFloat(e.target.value) ? parseFloat(e.target.value) : 0,
+                )
+              }}
+              type="text"
+              value={realEstate ? realEstate : 0}
+              name="Real Estate"
+            />
+          </div>
         </div>
         <button onClick={(e) => handleClick(e)}>Request Loan</button>
       </form>
@@ -84,6 +126,9 @@ const LoanWrapper = styled.div`
   border-radius: 10px;
   width: 300px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
 
   & form {
     display: flex;
@@ -122,5 +167,26 @@ const LoanWrapper = styled.div`
     &:hover {
       background-color: #0056b3;
     }
+  }
+  & .subform-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    & label {
+      margin-right: 5px;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+    & input {
+      margin-bottom: 5px;
+      width: 50px;
+    }
+  }
+  & .collateral {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: bold;
   }
 `

@@ -5,6 +5,7 @@ import { RootState } from '../../redux/store'
 import { styled } from 'styled-components'
 import { approveLoanAdmin } from '../../redux/LoanReducer'
 import { toast } from 'react-toastify'
+import { Loan } from '../../components/Loan'
 
 export const Admin: FC = () => {
   const notify = () => toast('Loan approved by admin')
@@ -19,9 +20,12 @@ export const Admin: FC = () => {
       {loanList.length > 0 ? (
         loanList.map((loan) => (
           <LoanItem key={loan.id}>
-            <div>Loan Size: {loan.loanSize}</div>
-            <div>Interest Rate: {loan.interestRate}%</div>
-            <div>Collateral Value: {loan.collateralValue}</div>
+            <Loan
+              id={loan.id}
+              loanSize={loan.loanSize}
+              collateralValue={loan.collateralValue}
+              interestRate={loan.interestRate}
+            />
             {loan.isApproveAdmin ? (
               <p>Approved</p>
             ) : (

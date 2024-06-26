@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import { approveLoanBorrower } from '../../redux/LoanReducer'
 import { toast } from 'react-toastify'
-
+import { Loan } from '../../components/Loan'
 export const Borrower: FC = () => {
   const notify = () => toast('Loan approved by borrower and is in fundraising')
   const loanList = useSelector((state: RootState) => state.loan.loanLists)
@@ -21,9 +21,12 @@ export const Borrower: FC = () => {
         {loanList.length > 0 ? (
           loanList.map((loan) => (
             <LoanItem key={loan.id}>
-              <div>Loan Size: {loan.loanSize}</div>
-              <div>Interest Rate: {loan.interestRate}%</div>
-              <div>Collateral Value: {loan.collateralValue}</div>
+              <Loan
+                id={loan.id}
+                loanSize={loan.loanSize}
+                collateralValue={loan.collateralValue}
+                interestRate={loan.interestRate}
+              />
               {!loan.isApproveBorrower && loan.isApproveAdmin ? (
                 <button
                   onClick={() => {

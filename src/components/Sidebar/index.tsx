@@ -2,31 +2,8 @@ import { FC } from 'react'
 import { styled } from 'styled-components'
 import { Welcome } from './Welcome'
 import { SidebarItem } from './SidebarItem'
-import { DashboardIcon } from '../../assets/icon/DashboardIcon'
 import { Link } from 'react-router-dom'
-
-const sideBarItemList = [
-  {
-    icon: <DashboardIcon color="#5D7285" size={1} />,
-    name: 'Admin',
-    link: '/admin',
-  },
-  {
-    icon: <DashboardIcon color="#5D7285" size={1} />,
-    name: 'Borrower',
-    link: '/borrower',
-  },
-  {
-    icon: <DashboardIcon color="#5D7285" size={1} />,
-    name: 'Lender',
-    link: '/lender',
-  },
-  {
-    icon: <DashboardIcon color="#5D7285" size={1} />,
-    name: 'Fundraising',
-    link: '/fundraising',
-  },
-]
+import { sideBarItemList } from './SidebarItemList'
 
 export const Sidebar: FC = () => {
   return (

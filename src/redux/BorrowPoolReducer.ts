@@ -19,7 +19,6 @@ const borowPoolSlice = createSlice({
       state,
       action: PayloadAction<{ id: string; amount: number }>,
     ) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { id, amount } = action.payload
       state.amount = amount
     },

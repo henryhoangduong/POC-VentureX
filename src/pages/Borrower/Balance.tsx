@@ -22,7 +22,6 @@ export const Balance: FC = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleModal = (
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     e:
       | React.MouseEvent<HTMLButtonElement>
       | React.MouseEvent<HTMLDivElement>

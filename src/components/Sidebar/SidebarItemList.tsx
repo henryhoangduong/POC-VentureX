@@ -28,6 +28,11 @@ export const sideBarItemList = [
   },
   {
     icon: <DashboardIcon color="#5D7285" size={1} />,
+    name: 'Borrower pool',
+    link: '/borrowerpool',
+  },
+  {
+    icon: <DashboardIcon color="#5D7285" size={1} />,
     name: 'Fundraising',
     link: '/fundraising',
   },

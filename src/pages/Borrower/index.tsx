@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import { styled } from 'styled-components'
-import { LoanRequest } from '../../components/LoanRequest'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import { approveLoanBorrower } from '../../redux/LoanReducer'
 import { toast } from 'react-toastify'
 import { Loan } from '../../components/Loan'
+import { Balance } from './Balance'
 export const Borrower: FC = () => {
   const notify = () => toast('Loan approved by borrower and is in fundraising')
   const loanList = useSelector((state: RootState) => state.loan.loanLists)
@@ -16,7 +16,7 @@ export const Borrower: FC = () => {
   }
   return (
     <BorrowerWrapper>
-      <LoanRequest />
+      <Balance />
       <LoanListWrapper>
         {loanList.length > 0 ? (
           loanList.map((loan) => (

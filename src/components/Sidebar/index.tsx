@@ -30,7 +30,7 @@ export const Sidebar: FC = () => {
 const Wrapper = styled.ul`
   border-radius: 10px;
   padding: 5px;
-  height: 100vh;
+
   min-width: 15%;
   background-color: white;
   & .divider {

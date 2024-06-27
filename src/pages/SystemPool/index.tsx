@@ -24,19 +24,14 @@ const AmountText = styled.p`
 `
 
 export const SystemPool: FC = () => {
-  const systemPool = useSelector(
-    (state: RootState) => state.systemPool.systemPoolList,
-  )
-  console.log('systemPool: ', systemPool[0])
+  const systemPool = useSelector((state: RootState) => state.systemPool)
 
   return (
     <>
-      {systemPool.map((item) => (
-        <Container key={item.id}>
-          <IdText>ID: {item.id}</IdText>
-          <AmountText>Amount: ${item.amount}</AmountText>
-        </Container>
-      ))}
+      <Container key={systemPool.id}>
+        <IdText>ID: {systemPool.id}</IdText>
+        <AmountText>Amount: ${systemPool.amount}</AmountText>
+      </Container>
     </>
   )
 }

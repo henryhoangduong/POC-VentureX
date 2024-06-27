@@ -1,8 +1,5 @@
-// Part 1
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { v4 as uuidv4 } from 'uuid'
 
-// Part 2
 export interface Loan {
   id: string
   loanSize: number
@@ -15,16 +12,7 @@ export interface LoanInitialState {
   loanLists: Loan[]
 }
 const initialState: LoanInitialState = {
-  loanLists: [
-    {
-      id: uuidv4(),
-      loanSize: 10,
-      interestRate: 10,
-      collateralValue: 10,
-      isApproveAdmin: false,
-      isApproveBorrower: false,
-    },
-  ],
+  loanLists: [],
 }
 // Part 3
 export const loanSlice = createSlice({

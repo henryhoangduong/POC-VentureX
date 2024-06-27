@@ -1,31 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { v4 as uuidv4 } from 'uuid'
 
-export interface SystemPool {
+export interface BorrowPool {
   id: string
   amount: number
 }
 
-export interface SystemPoolList {
-  systemPoolList: SystemPool[]
-}
-
-// const initialState: SystemPoolList = {
-//   systemPoolList: [
-//     {
-//       id: uuidv4(),
-//       amount: 0,
-//     },
-//   ],
-// }
-
-const initialState: SystemPool = {
+const initialState: BorrowPool = {
   id: uuidv4(),
   amount: 0,
 }
 
-const systemPoolSlice = createSlice({
-  name: 'systemPool',
+const borowPoolSlice = createSlice({
+  name: 'borrowPool',
   initialState,
   reducers: {
     setAmount: (
@@ -39,5 +26,5 @@ const systemPoolSlice = createSlice({
   },
 })
 
-export const { setAmount } = systemPoolSlice.actions
-export default systemPoolSlice.reducer
+export const { setAmount } = borowPoolSlice.actions
+export default borowPoolSlice.reducer

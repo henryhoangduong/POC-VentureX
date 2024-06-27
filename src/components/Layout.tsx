@@ -17,8 +17,6 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
           style={{
             margin: '5px',
             borderRadius: '10px',
-            overflow: 'hidden',
-            height: '100%',
           }}
         >
           {children}
@@ -36,6 +34,7 @@ const Wrapper = styled.div`
 `
 
 const MainWrapper = styled.div`
-  width: 84%;
-  overflow-y: scroll;
+  height: 100vh;
+  overflow: auto;
+  flex: 1;
 `

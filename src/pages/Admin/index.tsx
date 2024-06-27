@@ -29,13 +29,13 @@ export const Admin: FC = () => {
             {loan.isApproveAdmin ? (
               <p>Approved</p>
             ) : (
-              <button
+              <Button
                 onClick={() => {
                   handleClick(loan.id)
                 }}
               >
                 Approve
-              </button>
+              </Button>
             )}
           </LoanItem>
         ))
@@ -60,4 +60,12 @@ const LoanItem = styled.div`
   border-radius: 10px;
   width: 20%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`
+const Button = styled.div`
+  color: white;
+  background-color: #1d69ff;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
 `
